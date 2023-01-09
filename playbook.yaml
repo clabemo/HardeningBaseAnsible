@@ -1,7 +1,7 @@
 ---
 - hosts: all
   gather_facts: no
-  connection: network_cli
+  connection: ansible.netcommon.network_cli
   tasks:
   - name: Disable HTTP and Telnet access
     mikrotik_firewall_rule:
