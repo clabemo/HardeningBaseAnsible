@@ -3,7 +3,7 @@
   hosts: all
   gather_facts: no
   
-  task:
+  tasks:
     - name: Check Version ond Device
       routeros_command:
         commands: /system package print
