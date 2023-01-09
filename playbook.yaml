@@ -1,7 +1,6 @@
 ---
-- hosts: routers
+- hosts: all
   gather_facts: false
-  connection: network_cli
   tasks:
   - name: Display resource statistics (routeros)
     community.network.routeros_command:
