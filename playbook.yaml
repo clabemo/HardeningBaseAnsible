@@ -3,64 +3,10 @@
   gather_facts: no
   connection: network_cli
   tasks:
-  - name: Disable HTTP and Telnet access
-    mikrotik_firewall_rule:
-      chain: input
-      protocol: tcp
-      dst-port: 80,23
-      action: drop
-      state: absent
-  - name: Change default SSH port
-    mikrotik_system_service:
-      name: ssh
-      port: 2222
-      state: present
-  - name: Enable SSH access for specific IP address
-    mikrotik_firewall_rule:
-      chain: input
-      protocol: tcp
-      dst-port: 2222
-      action: accept
-      src-address: 192.168.0.0/24
-      state: present
-  - name: Set strong password for admin user
-    mikrotik_user:
-      name: admin
-      password: minhasenhaforte
-      state: present
-  - name: Set strong password for guest user
-    mikrotik_user:
-      name: guest
-      password: minhasenhaforte
-  - name: Disable FTP access
-    mikrotik_system_service:
-      name: ftp
-      state: absent
-  - name: Block NetBIOS traffic
-    mikrotik_firewall_rule:
-      chain: input
-      protocol: udp
-      dst-port: 137-139
-      action: drop
-      state: present
-  - name: Block phishing and malware sites
-    mikrotik_firewall_address_list:
-      name: blocked_sites
-      address:
-      - phishing.example.com
-      - malware.example.com
-      state: present
-    mikrotik_firewall_rule:
-      chain: input
-      protocol: tcp
-      dst-address-list: blocked_sites
-      action: drop
-      state: present
-  - name: Allow HTTP and HTTPS access from specific IP
-    mikrotik_firewall_rule:
-      chain: input
-      protocol: tcp
-      dst-port: 80,443
-      action: accept
-      src-address: 192.168.0.0/24
-      state: present
+- name: Disable HTTP and Telnet access
+   mikrotik_firewall_rule:
+     chain: input
+     protocol: tcp
+     dst-port: 23
+     action: drop
+     state: absent
