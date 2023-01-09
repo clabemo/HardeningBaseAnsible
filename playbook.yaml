@@ -1,7 +1,7 @@
 ---
 - hosts: all
   gather_facts: false
-  connection: ansible.netcommon.network_cli
+  ansible_connection: ansible.netcommon.network_cli
   tasks:
   - name: Display resource statistics (routeros)
     community.network.routeros_command:
