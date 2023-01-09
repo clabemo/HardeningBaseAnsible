@@ -1,12 +1,14 @@
 ---
-- hosts: all
+- name: "check OS version"
+  hosts: all
   gather_facts: no
-  connection: ansible.netcommon.network_cli
-  tasks:
-  - name: Disable HTTP and Telnet access
-    mikrotik_firewall_rule:
-      chain: input
-      protocol: tcp
-      dst-port: 23
-      action: drop
-      state: absent
+  
+  task:
+    - name: Check Version ond Device
+      routeros_command:
+        commands: /system package print
+      register: version_output
+      
+    - name: Display facts variables
+      debug:
+        var: version
