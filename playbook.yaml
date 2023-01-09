@@ -21,7 +21,7 @@
       protocol: tcp
       dst-port: 2222
       action: accept
-      src-address: 192.168.1.100
+      src-address: 192.168.0.0/24
       state: present
   - name: Set strong password for admin user
     mikrotik_user:
