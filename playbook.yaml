@@ -3,10 +3,10 @@
   gather_facts: no
   connection: network_cli
   tasks:
-  - name: Disable HTTP and Telnet access
-    mikrotik_firewall_rule:
-      chain: input
-      protocol: tcp
-      dst-port: 23
-      action: drop
-      state: absent
+- name: Disable HTTP and Telnet access
+   mikrotik_firewall_rule:
+     chain: input
+     protocol: tcp
+     dst-port: 23
+     action: drop
+     state: absent
