@@ -1,20 +1,5 @@
----
-- name: Gerenciar dispositivos RouterOS
-  hosts: all
-  gather_facts: no
-  connection: network_cli
-  tasks:
-  - name: Configurar o nome do host
-    routeros_command:
-      commands: '/system identity set name=novo_nome'
-  - name: Habilitar o SSH
-    routeros_service:
-      name: ssh
-      state: enabled
-  - name: Adicionar regra de firewall
-    mikrotik_firewall_rule:
-      chain: input
-      protocol: tcp
-      dst-port: 22
-      action: accept
-      state: present
+- name: Display resource statistics (routeros)
+  community.network.routeros_command:
+    commands: /system resource print
+  register: routeros_resources
+  when: ansible_network_os == 'community.network.routeros'
