@@ -1,7 +1,11 @@
 ---
 - hosts: all
   gather_facts: no
+  connection: ansible.netcommon.network_cli
 
   tasks:
-  - name: Enable SSH service
-    ansible.builtin.command: /ip service set ssh disabled=no
+  - name: Display resource statistics (routeros)
+    community.network.routeros_command:
+      commands: /system resource print
+    register: routeros_resources
+    when: ansible_network_os == 'community.network.routeros'
