@@ -4,8 +4,5 @@
   connection: network_cli
 
   tasks:
-  - name: Disable Telnet and Enable SSH
-    routeros_command:
-      commands:
-      - /ip service set telnet disabled=yes
-      - /ip service set ssh disabled=no
+  - name: Enable SSH service
+    ansible.builtin.command: /ip service set ssh disabled=no
