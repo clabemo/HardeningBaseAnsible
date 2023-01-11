@@ -1,3 +1,4 @@
+---
 - name: Display resource statistics (routeros)
   community.network.routeros_command:
     commands: /system resource print
