@@ -1,7 +1,8 @@
-- name: Hardening Mikrotik Router
-  hosts: all
+---
+- hosts: all
   gather_facts: no
-  
+  connection: network_cli
+
   tasks:
   - name: Disable Telnet and Enable SSH
     network_cli:
